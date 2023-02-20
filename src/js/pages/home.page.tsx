@@ -5,16 +5,24 @@ import { type Country, type SelectOption } from '../types/types';
 import { SearchBar } from '../components/search-bar';
 
 export const HomePage: React.FunctionComponent = () => {
-  const { countries, updateCountries, updateRegionOptions } =
-    useContext(AppContext);
+  const {
+    updateCountries,
+    updateRegionOptions,
+    displayCountries,
+    updateDisplayCountries,
+    updateCountryNameOptions,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const getCountriesAsync = async (): Promise<void> => {
       try {
         const result = await getCountriesAlphabetically();
         updateCountries(result);
+        updateDisplayCountries(result);
         const regions = mapRegionOptions(result);
         updateRegionOptions(regions);
+        const countryNames = mapCountryNameOptions(result);
+        updateCountryNameOptions(countryNames);
       } catch (e) {
         console.log(e);
       }
@@ -30,7 +38,13 @@ export const HomePage: React.FunctionComponent = () => {
     });
   };
 
-  const countriesList = countries.map((c) => {
+  const mapCountryNameOptions = (countries: Country[]): SelectOption[] => {
+    return countries.map((c) => {
+      return { value: c.name.common, label: c.name.common };
+    });
+  };
+
+  const countriesList = displayCountries.map((c) => {
     return (
       <li key={c.name.common}>
         <h1>{c.name.common}</h1>

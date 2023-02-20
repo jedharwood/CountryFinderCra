@@ -13,7 +13,7 @@ export const SelectInput: React.FunctionComponent<SelectProps> = (
   props: SelectProps,
 ) => {
   return (
-    <div className="w-full px-2 py-3 mb-3">
+    <div className="w-full">
       <Select
         required={true}
         isSearchable={props.isSearchable}

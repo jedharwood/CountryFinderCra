@@ -7,11 +7,19 @@ import {
 
 const defaultState: IAppContext = {
   countries: [],
-  updateCountries: function (countries: Country[]): void {
+  updateCountries: (countries: Country[]): void => {
+    throw new Error('Function not implemented.');
+  },
+  displayCountries: [],
+  updateDisplayCountries: (displayCountries: Country[]): void => {
     throw new Error('Function not implemented.');
   },
   regionOptions: [],
-  updateRegionOptions: function (regionOptions: SelectOption[]): void {
+  updateRegionOptions: (regionOptions: SelectOption[]): void => {
+    throw new Error('Function not implemented.');
+  },
+  countryNameOptions: [],
+  updateCountryNameOptions: (countryNameOptions: SelectOption[]): void => {
     throw new Error('Function not implemented.');
   },
 };

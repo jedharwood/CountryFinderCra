@@ -13,6 +13,10 @@ export interface SelectOption {
 export interface IAppContext {
   countries: Country[];
   updateCountries: (countries: Country[]) => void;
+  displayCountries: Country[];
+  updateDisplayCountries: (displayCountries: Country[]) => void;
   regionOptions: SelectOption[];
   updateRegionOptions: (regionOptions: SelectOption[]) => void;
+  countryNameOptions: SelectOption[];
+  updateCountryNameOptions: (countryNameOptions: SelectOption[]) => void;
 }

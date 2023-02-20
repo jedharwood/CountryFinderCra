@@ -10,14 +10,28 @@ import { type SelectOption, type Country } from './types/types';
 
 export const App = (): JSX.Element => {
   const [countries, setCountries] = useState<Country[]>([]);
+  const [displayCountries, setDisplayCountries] = useState<Country[]>([]);
   const [regionOptions, setRegionOptions] = useState<SelectOption[]>([]);
+  const [countryNameOptions, setCountryNameOptions] = useState<SelectOption[]>(
+    [],
+  );
 
   const updateCountries = (countryArray: Country[]): void => {
     setCountries(countryArray);
   };
 
+  const updateDisplayCountries = (displayCountryArray: Country[]): void => {
+    setDisplayCountries(displayCountryArray);
+  };
+
   const updateRegionOptions = (regionOptionArray: SelectOption[]): void => {
     setRegionOptions(regionOptionArray);
+  };
+
+  const updateCountryNameOptions = (
+    countryNameOptionArray: SelectOption[],
+  ): void => {
+    setCountryNameOptions(countryNameOptionArray);
   };
 
   return (
@@ -26,8 +40,12 @@ export const App = (): JSX.Element => {
         value={{
           countries,
           updateCountries,
+          displayCountries,
+          updateDisplayCountries,
           regionOptions,
           updateRegionOptions,
+          countryNameOptions,
+          updateCountryNameOptions,
         }}
       >
         <Header />
