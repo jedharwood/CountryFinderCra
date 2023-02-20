@@ -6,13 +6,18 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header } from './components/header';
 import { AppContext } from './context/app-context';
 import { useState } from 'react';
-import { type Country } from './types/types';
+import { type SelectOption, type Country } from './types/types';
 
 export const App = (): JSX.Element => {
   const [countries, setCountries] = useState<Country[]>([]);
+  const [regionOptions, setRegionOptions] = useState<SelectOption[]>([]);
 
   const updateCountries = (countryArray: Country[]): void => {
     setCountries(countryArray);
+  };
+
+  const updateRegionOptions = (regionOptionArray: SelectOption[]): void => {
+    setRegionOptions(regionOptionArray);
   };
 
   return (
@@ -21,6 +26,8 @@ export const App = (): JSX.Element => {
         value={{
           countries,
           updateCountries,
+          regionOptions,
+          updateRegionOptions,
         }}
       >
         <Header />

@@ -6,7 +6,13 @@ export interface Country {
   flag: string;
 }
 
+export interface SelectOption {
+  value: string;
+  label: string;
+}
 export interface IAppContext {
   countries: Country[];
   updateCountries: (countries: Country[]) => void;
+  regionOptions: SelectOption[];
+  updateRegionOptions: (regionOptions: SelectOption[]) => void;
 }
