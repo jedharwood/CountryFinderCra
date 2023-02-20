@@ -1,10 +1,5 @@
 import { createContext } from 'react';
-import { type Country } from '../api/fetch';
-
-export interface IAppContext {
-  countries: Country[];
-  updateCountries: (countries: Country[]) => void;
-}
+import { type Country, type IAppContext } from '../types/types';
 
 const defaultState: IAppContext = {
   countries: [],

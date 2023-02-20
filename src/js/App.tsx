@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header } from './components/header';
 import { AppContext } from './context/app-context';
 import { useState } from 'react';
-import { type Country } from './api/fetch';
+import { type Country } from './types/types';
 
 export const App = (): JSX.Element => {
   const [countries, setCountries] = useState<Country[]>([]);
