@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { type Country, getCountriesAlphabetically } from '../api/fetch';
-import { SearchBar } from '../components/search-bar';
+import React, { useContext, useEffect } from 'react';
+import { getCountriesAlphabetically } from '../api/fetch';
+import { AppContext } from '../context/app-context';
 
 export const HomePage: React.FunctionComponent = () => {
-  const [countries, setCountries] = useState<Country[]>([]);
+  const { countries, updateCountries } = useContext(AppContext);
 
   useEffect(() => {
     const getCountriesAsync = async (): Promise<void> => {
       try {
         const result = await getCountriesAlphabetically();
-        setCountries(result);
+        updateCountries(result);
       } catch (e) {
         console.log(e);
       }
@@ -19,18 +19,19 @@ export const HomePage: React.FunctionComponent = () => {
 
   const countriesList = countries.map((c) => {
     return (
-      <>
-        <SearchBar />
-        <li key={c.name.common}>
-          <h1>{c.name.common}</h1>
-          <p>{c.capital}</p>
-          <p>{c.region}</p>
-          <p>{c.population}</p>
-          <p>{c.flag}</p>
-        </li>
-      </>
+      <li key={c.name.common}>
+        <h1>{c.name.common}</h1>
+        <p>{c.capital}</p>
+        <p>{c.region}</p>
+        <p>{c.population}</p>
+        <p>{c.flag}</p>
+      </li>
     );
   });
 
-  return <ul>{countriesList}</ul>;
+  return (
+    <>
+      <ul>{countriesList}</ul>
+    </>
+  );
 };
