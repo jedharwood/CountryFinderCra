@@ -1,10 +1,4 @@
-export interface Country {
-  name: { common: string };
-  capital: string;
-  region: string;
-  population: number;
-  flag: string;
-}
+import { type Country } from '../types/types';
 
 export const getCountriesAlphabetically = async (): Promise<Country[]> => {
   const countries = await fetch('https://restcountries.com/v3.1/all').then(
