@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/app-context';
 
-interface SpinnerProps {
-  isVisible: boolean;
-}
+export const Spinner: React.FunctionComponent = () => {
+  const { loading } = useContext(AppContext);
 
-export const Spinner: React.FunctionComponent<SpinnerProps> = (
-  props: SpinnerProps,
-) => {
-  return !props.isVisible ? null : (
+  return !loading ? null : (
     <div className="text-center p-12">
       <div role="status">
         <svg

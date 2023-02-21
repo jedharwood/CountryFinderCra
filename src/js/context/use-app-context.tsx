@@ -7,6 +7,7 @@ interface IAppContextState {
   selectedCountry: Country | undefined;
   regionOptions: SelectOption[];
   countryNameOptions: SelectOption[];
+  loading: boolean;
 }
 
 interface IAppContextActions {
@@ -14,6 +15,7 @@ interface IAppContextActions {
   //   updateCountries: (countryArray: Country[]) => void;
   updateDisplayCountries: (displayCountryArray: Country[]) => void;
   selectCountry: (country: Country) => void;
+  updateLoading: (value: boolean) => void;
 }
 
 export const useAppContext = (): [IAppContextState, IAppContextActions] => {
@@ -24,6 +26,7 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
   const [countryNameOptions, setCountryNameOptions] = useState<SelectOption[]>(
     [],
   );
+  const [loading, setLoading] = useState<boolean>(true);
 
   const setInitialState = (countries: Country[]): void => {
     setCountries(countries);
@@ -61,12 +64,17 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     setCountryNameOptions(options);
   };
 
+  const updateLoading = (value: boolean): void => {
+    setLoading(value);
+  };
+
   const state: IAppContextState = {
     countries,
     displayCountries,
     selectedCountry,
     regionOptions,
     countryNameOptions,
+    loading,
   };
 
   const actions: IAppContextActions = {
@@ -74,6 +82,7 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     // updateCountries,
     updateDisplayCountries,
     selectCountry,
+    updateLoading,
   };
 
   return [state, actions];
