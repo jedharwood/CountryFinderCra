@@ -14,18 +14,13 @@ export interface SelectOption {
   label: string;
 }
 
-export interface SelectProps {
-  isSearchable: boolean;
-  placeHolder: string;
-  options: SelectOption[];
-  onChange: (option: SelectOption | null) => void;
-}
-
 export interface IAppContext {
   countries: Country[];
   updateCountries: (countries: Country[]) => void;
   displayCountries: Country[];
   updateDisplayCountries: (displayCountries: Country[]) => void;
+  selectedCountry: Country | undefined;
+  selectCountry: (country: Country) => void;
   regionOptions: SelectOption[];
   updateRegionOptions: (regionOptions: SelectOption[]) => void;
   countryNameOptions: SelectOption[];
