@@ -16,25 +16,15 @@ interface IAppContext {
 
 const defaultState: IAppContext = {
   countries: [],
-  updateCountries: (countries: Country[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  updateCountries: (): void => {},
   displayCountries: [],
-  updateDisplayCountries: (displayCountries: Country[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  updateDisplayCountries: (): void => {},
   selectedCountry: undefined,
-  selectCountry: (country: Country): void => {
-    throw new Error('Function not implemented.');
-  },
+  selectCountry: (): void => {},
   regionOptions: [],
-  updateRegionOptions: (regionOptions: SelectOption[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  updateRegionOptions: (): void => {},
   countryNameOptions: [],
-  updateCountryNameOptions: (countryNameOptions: SelectOption[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  updateCountryNameOptions: (): void => {},
 };
 
 export const AppContext = createContext<IAppContext>(defaultState);

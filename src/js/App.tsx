@@ -5,56 +5,14 @@ import { NotFoundPage } from './pages/not-found.page';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header } from './components/header';
 import { AppContext } from './context/app-context';
-import { useState } from 'react';
-import { type SelectOption, type Country } from './types/types';
+import { useAppContext } from './context/use-app-context';
 
 export const App = (): JSX.Element => {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [displayCountries, setDisplayCountries] = useState<Country[]>([]);
-  const [selectedCountry, setSelectedCountry] = useState<Country>();
-  const [regionOptions, setRegionOptions] = useState<SelectOption[]>([]);
-  const [countryNameOptions, setCountryNameOptions] = useState<SelectOption[]>(
-    [],
-  );
-
-  const updateCountries = (countryArray: Country[]): void => {
-    setCountries(countryArray);
-  };
-
-  const updateDisplayCountries = (displayCountryArray: Country[]): void => {
-    setDisplayCountries(displayCountryArray);
-  };
-
-  const selectCountry = (country: Country): void => {
-    setSelectedCountry(country);
-  };
-
-  const updateRegionOptions = (regionOptionArray: SelectOption[]): void => {
-    setRegionOptions(regionOptionArray);
-  };
-
-  const updateCountryNameOptions = (
-    countryNameOptionArray: SelectOption[],
-  ): void => {
-    setCountryNameOptions(countryNameOptionArray);
-  };
+  const [state, actions] = useAppContext();
 
   return (
     <Router>
-      <AppContext.Provider
-        value={{
-          countries,
-          updateCountries,
-          displayCountries,
-          updateDisplayCountries,
-          selectedCountry,
-          selectCountry,
-          regionOptions,
-          updateRegionOptions,
-          countryNameOptions,
-          updateCountryNameOptions,
-        }}
-      >
+      <AppContext.Provider value={{ ...state, ...actions }}>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
