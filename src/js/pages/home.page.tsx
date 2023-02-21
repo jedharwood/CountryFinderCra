@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getCountriesAlphabetically } from '../api/fetch';
 import { AppContext } from '../context/app-context';
 import { type Country, type SelectOption } from '../types/types';
 import { SearchBar } from '../components/search-bar';
 import { CountryGrid } from '../components/country-grid';
+import { Spinner } from '../components/spinner';
 
 export const HomePage: React.FunctionComponent = () => {
   const {
@@ -13,12 +14,15 @@ export const HomePage: React.FunctionComponent = () => {
     updateCountryNameOptions,
   } = useContext(AppContext);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getCountriesAsync = async (): Promise<void> => {
       try {
         const result = await getCountriesAlphabetically();
         updateCountries(result);
         updateDisplayCountries(result);
+        setLoading(false);
         const regions = mapRegionOptions(result);
         updateRegionOptions(regions);
         const countryNames = mapCountryNameOptions(result);
@@ -47,6 +51,7 @@ export const HomePage: React.FunctionComponent = () => {
   return (
     <div className="bg-gray-100 pt-3">
       <SearchBar />
+      <Spinner isVisible={loading} />
       <CountryGrid />
     </div>
   );
