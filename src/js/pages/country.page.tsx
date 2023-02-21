@@ -19,6 +19,10 @@ export const CountryPage: React.FunctionComponent = () => {
         capital={selectedCountry.capital}
         region={selectedCountry.region}
         population={selectedCountry.population}
+        subregion={selectedCountry.subregion}
+        unMember={selectedCountry.unMember}
+        area={selectedCountry.area}
+        coatOfArms={selectedCountry.coatOfArms.svg}
       />
     );
   } else {

@@ -7,6 +7,12 @@ export interface Country {
     svg: string;
     alt: string;
   };
+  subregion: string;
+  unMember: boolean;
+  area: number;
+  coatOfArms: {
+    svg: string;
+  };
 }
 
 export interface Flag {
