@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Header: React.FunctionComponent = () => {
   return (
-    <header className="relative flex flex-wrap items-center justify-between px-6 py-3 shadow-md">
+    <header className="relative flex flex-wrap items-center justify-between px-6 py-3 shadow-lg">
       <nav>
         <div className="mx-auto flex">
           <Link

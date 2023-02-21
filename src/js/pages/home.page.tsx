@@ -3,12 +3,12 @@ import { getCountriesAlphabetically } from '../api/fetch';
 import { AppContext } from '../context/app-context';
 import { type Country, type SelectOption } from '../types/types';
 import { SearchBar } from '../components/search-bar';
+import { CountryGrid } from '../components/country-grid';
 
 export const HomePage: React.FunctionComponent = () => {
   const {
     updateCountries,
     updateRegionOptions,
-    displayCountries,
     updateDisplayCountries,
     updateCountryNameOptions,
   } = useContext(AppContext);
@@ -44,22 +44,10 @@ export const HomePage: React.FunctionComponent = () => {
     });
   };
 
-  const countriesList = displayCountries.map((c) => {
-    return (
-      <li key={c.name.common}>
-        <h1>{c.name.common}</h1>
-        <p>{c.capital}</p>
-        <p>{c.region}</p>
-        <p>{c.population}</p>
-        <p>{c.flag}</p>
-      </li>
-    );
-  });
-
   return (
-    <>
+    <div className="bg-gray-100 pt-3">
       <SearchBar />
-      <ul>{countriesList}</ul>
-    </>
+      <CountryGrid />
+    </div>
   );
 };
