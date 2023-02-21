@@ -1,22 +1,28 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/app-context';
 import { CountryCard } from './country-card';
-import { type Flag } from './country-card';
+import { type Flag } from '../types/types';
 
 export const CountryGrid: React.FunctionComponent = () => {
-  const { displayCountries } = useContext(AppContext);
+  const { displayCountries, selectCountry } = useContext(AppContext);
 
-  const countries = displayCountries.map((c) => {
-    const flag: Flag = { png: c.flags.png, alt: c.flags.alt };
+  const countries = displayCountries.map((country) => {
+    const flag: Flag = { svg: country.flags.svg, alt: country.flags.alt };
+
+    const setSelectedCountry = (): void => {
+      console.log('ssc');
+      selectCountry(country);
+    };
 
     return (
       <CountryCard
-        key={c.name.common}
-        name={c.name.common}
+        key={country.name.common}
+        name={country.name.common}
         flag={flag}
-        capital={c.capital}
-        region={c.region}
-        population={c.population}
+        capital={country.capital}
+        region={country.region}
+        population={country.population}
+        onClick={setSelectedCountry}
       />
     );
   });

@@ -1,6 +1,13 @@
 import React from 'react';
 import Select from 'react-select';
-import { type SelectProps } from '../types/types';
+import { type SelectOption } from '../types/types';
+
+interface SelectProps {
+  isSearchable: boolean;
+  placeHolder: string;
+  options: SelectOption[];
+  onChange: (option: SelectOption | null) => void;
+}
 
 export const SelectInput: React.FunctionComponent<SelectProps> = (
   props: SelectProps,

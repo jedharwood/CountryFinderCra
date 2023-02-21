@@ -11,6 +11,7 @@ import { type SelectOption, type Country } from './types/types';
 export const App = (): JSX.Element => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [displayCountries, setDisplayCountries] = useState<Country[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState<Country>();
   const [regionOptions, setRegionOptions] = useState<SelectOption[]>([]);
   const [countryNameOptions, setCountryNameOptions] = useState<SelectOption[]>(
     [],
@@ -22,6 +23,10 @@ export const App = (): JSX.Element => {
 
   const updateDisplayCountries = (displayCountryArray: Country[]): void => {
     setDisplayCountries(displayCountryArray);
+  };
+
+  const selectCountry = (country: Country): void => {
+    setSelectedCountry(country);
   };
 
   const updateRegionOptions = (regionOptionArray: SelectOption[]): void => {
@@ -42,6 +47,8 @@ export const App = (): JSX.Element => {
           updateCountries,
           displayCountries,
           updateDisplayCountries,
+          selectedCountry,
+          selectCountry,
           regionOptions,
           updateRegionOptions,
           countryNameOptions,
@@ -51,7 +58,7 @@ export const App = (): JSX.Element => {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="country" element={<CountryPage />} />
+          <Route path="country/:countryName" element={<CountryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AppContext.Provider>

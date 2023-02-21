@@ -26,23 +26,25 @@ export const SearchBar: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="w-full px-6 py-4 space-x-6 flex space-between">
-      <SelectInput
-        options={countryNameOptions}
-        placeHolder={searchPlaceholder}
-        isSearchable={true}
-        onChange={(e) => {
-          filterCountriesByName(e?.value);
-        }}
-      />
-      <SelectInput
-        options={regionOptions}
-        placeHolder={regionPlaceholder}
-        isSearchable={false}
-        onChange={(e) => {
-          filterCountriesByRegion(e?.value);
-        }}
-      />
+    <div className="p-6 w-full">
+      <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
+        <SelectInput
+          options={countryNameOptions}
+          placeHolder={searchPlaceholder}
+          isSearchable={true}
+          onChange={(e) => {
+            filterCountriesByName(e?.value);
+          }}
+        />
+        <SelectInput
+          options={regionOptions}
+          placeHolder={regionPlaceholder}
+          isSearchable={false}
+          onChange={(e) => {
+            filterCountriesByRegion(e?.value);
+          }}
+        />
+      </div>
     </div>
   );
 };
