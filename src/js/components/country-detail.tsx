@@ -2,7 +2,7 @@ import React from 'react';
 import { type Flag } from '../types/types';
 import { buildTextRow, type TextRowSize } from './helpers/build-text-row';
 
-export interface CountryDetailProps {
+interface CountryDetailProps {
   name: string;
   flag: Flag;
   capital: string;
@@ -17,9 +17,21 @@ export interface CountryDetailProps {
 export const CountryDetail: React.FunctionComponent<CountryDetailProps> = (
   props: CountryDetailProps,
 ) => {
+  const {
+    name,
+    flag,
+    capital,
+    region,
+    population,
+    subregion,
+    unMember,
+    area,
+    coatOfArms,
+  } = props;
   const textRowSize: TextRowSize = { size: 'm' };
-  const isUnMemberState = (name: string, member: boolean): string => {
-    return member
+
+  const isUnMemberState = (): string => {
+    return unMember
       ? `${name} is a member of the UN`
       : `${name} is not a member of the UN`;
   };
@@ -28,22 +40,18 @@ export const CountryDetail: React.FunctionComponent<CountryDetailProps> = (
     <div className="p-6 w-full">
       <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 text-slate-800">
         <img
-          src={props.flag.svg}
-          alt={props.flag.alt}
+          src={flag.svg}
+          alt={flag.alt}
           className="object-cover w-full rounded-lg shadow-md"
         />
         <div className="h-fit mb-2">
-          <h5 className="text-2xl font-bold mb-2">{props.name}</h5>
-          {buildTextRow('Capital', props.capital, textRowSize)}
-          {buildTextRow('Region', props.region, textRowSize)}
-          {buildTextRow('Sub-region', props.subregion, textRowSize)}
-          {buildTextRow('Population', props.population, textRowSize)}
-          {buildTextRow(
-            'Memberships',
-            isUnMemberState(props.name, props.unMember),
-            textRowSize,
-          )}
-          {buildTextRow('Area (sq  miles)', props.area, textRowSize)}
+          <h5 className="text-2xl font-bold mb-2">{name}</h5>
+          {buildTextRow('Capital', capital, textRowSize)}
+          {buildTextRow('Region', region, textRowSize)}
+          {buildTextRow('Sub-region', subregion, textRowSize)}
+          {buildTextRow('Population', population, textRowSize)}
+          {buildTextRow('Memberships', isUnMemberState(), textRowSize)}
+          {buildTextRow('Area (sq  miles)', area, textRowSize)}
         </div>
         <span>
           <div className="flex justify-center">
@@ -51,8 +59,8 @@ export const CountryDetail: React.FunctionComponent<CountryDetailProps> = (
           </div>
           <div className="flex justify-center">
             <img
-              src={props.coatOfArms}
-              alt={`The coat of arms for ${props.name}`}
+              src={coatOfArms}
+              alt={`The coat of arms for ${name}`}
               className="object-cover w-1/2 rounded-lg"
             />
           </div>

@@ -1,31 +1,32 @@
 import { createContext } from 'react';
-import {
-  type SelectOption,
-  type Country,
-  type IAppContext,
-} from '../types/types';
+import { type SelectOption, type Country } from '../types/types';
+
+interface IAppContext {
+  countries: Country[];
+  setInitialState: (countries: Country[]) => void;
+  // updateCountries: (countries: Country[]) => void;
+  displayCountries: Country[];
+  updateDisplayCountries: (countries: Country[]) => void;
+  selectedCountry: Country | undefined;
+  selectCountry: (country: Country) => void;
+  regionOptions: SelectOption[];
+  countryNameOptions: SelectOption[];
+  loading: boolean;
+  updateLoading: (value: boolean) => void;
+}
 
 const defaultState: IAppContext = {
   countries: [],
-  updateCountries: (countries: Country[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  setInitialState: (): void => {},
+  // updateCountries: (): void => {},
   displayCountries: [],
-  updateDisplayCountries: (displayCountries: Country[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  updateDisplayCountries: (): void => {},
   selectedCountry: undefined,
-  selectCountry: (country: Country): void => {
-    throw new Error('Function not implemented.');
-  },
+  selectCountry: (): void => {},
   regionOptions: [],
-  updateRegionOptions: (regionOptions: SelectOption[]): void => {
-    throw new Error('Function not implemented.');
-  },
   countryNameOptions: [],
-  updateCountryNameOptions: (countryNameOptions: SelectOption[]): void => {
-    throw new Error('Function not implemented.');
-  },
+  loading: true,
+  updateLoading: (): void => {},
 };
 
 export const AppContext = createContext<IAppContext>(defaultState);

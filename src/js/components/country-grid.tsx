@@ -7,21 +7,21 @@ export const CountryGrid: React.FunctionComponent = () => {
   const { displayCountries, selectCountry } = useContext(AppContext);
 
   const countries = displayCountries.map((country) => {
-    const flag: Flag = { svg: country.flags.svg, alt: country.flags.alt };
+    const { name, flags, capital, region, population } = country;
+    const flag: Flag = { svg: flags.svg, alt: flags.alt };
 
     const setSelectedCountry = (): void => {
-      console.log('ssc');
       selectCountry(country);
     };
 
     return (
       <CountryCard
-        key={country.name.common}
-        name={country.name.common}
+        key={name.common}
+        name={name.common}
         flag={flag}
-        capital={country.capital}
-        region={country.region}
-        population={country.population}
+        capital={capital}
+        region={region}
+        population={population}
         onClick={setSelectedCountry}
       />
     );
