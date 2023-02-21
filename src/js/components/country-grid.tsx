@@ -10,7 +10,6 @@ export const CountryGrid: React.FunctionComponent = () => {
     const flag: Flag = { svg: country.flags.svg, alt: country.flags.alt };
 
     const setSelectedCountry = (): void => {
-      console.log('ssc');
       selectCountry(country);
     };
 

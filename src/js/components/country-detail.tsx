@@ -2,7 +2,7 @@ import React from 'react';
 import { type Flag } from '../types/types';
 import { buildTextRow, type TextRowSize } from './helpers/build-text-row';
 
-export interface CountryDetailProps {
+interface CountryDetailProps {
   name: string;
   flag: Flag;
   capital: string;
