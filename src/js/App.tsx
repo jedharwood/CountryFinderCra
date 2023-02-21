@@ -51,7 +51,7 @@ export const App = (): JSX.Element => {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="country" element={<CountryPage />} />
+          <Route path="country/:countryName" element={<CountryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AppContext.Provider>
