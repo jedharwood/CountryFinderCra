@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
+import { AppContext } from '../context/app-context';
 import { type SelectOption } from '../types/types';
 
 interface SelectProps {
@@ -12,6 +13,7 @@ interface SelectProps {
 export const SelectInput: React.FunctionComponent<SelectProps> = (
   props: SelectProps,
 ) => {
+  const { loading } = useContext(AppContext);
   const { isSearchable, placeHolder, options, onChange } = props;
 
   return (
@@ -22,6 +24,7 @@ export const SelectInput: React.FunctionComponent<SelectProps> = (
         options={options}
         onChange={onChange}
         placeholder={placeHolder}
+        isLoading={loading}
       />
     </div>
   );
