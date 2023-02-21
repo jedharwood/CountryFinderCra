@@ -10,11 +10,10 @@ interface IAppContextState {
 }
 
 interface IAppContextActions {
-  updateCountries: (countryArray: Country[]) => void;
+  setInitialState: (countries: Country[]) => void;
+  //   updateCountries: (countryArray: Country[]) => void;
   updateDisplayCountries: (displayCountryArray: Country[]) => void;
   selectCountry: (country: Country) => void;
-  updateRegionOptions: (regionOptionArray: SelectOption[]) => void;
-  updateCountryNameOptions: (countryNameOptionArray: SelectOption[]) => void;
 }
 
 export const useAppContext = (): [IAppContextState, IAppContextActions] => {
@@ -26,9 +25,16 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     [],
   );
 
-  const updateCountries = (countryArray: Country[]): void => {
-    setCountries(countryArray);
+  const setInitialState = (countries: Country[]): void => {
+    setCountries(countries);
+    setDisplayCountries(countries);
+    mapRegionOptions(countries);
+    mapCountryNameOptions(countries);
   };
+
+  //   const updateCountries = (countryArray: Country[]): void => {
+  //     setCountries(countryArray);
+  //   };
 
   const updateDisplayCountries = (displayCountryArray: Country[]): void => {
     setDisplayCountries(displayCountryArray);
@@ -38,14 +44,21 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     setSelectedCountry(country);
   };
 
-  const updateRegionOptions = (regionOptionArray: SelectOption[]): void => {
-    setRegionOptions(regionOptionArray);
+  const mapRegionOptions = (countries: Country[]): void => {
+    const uniqueRegions = [...new Set(countries.map((c) => c.region))];
+    const options = uniqueRegions.map((u) => {
+      return { value: u, label: u };
+    });
+
+    setRegionOptions(options);
   };
 
-  const updateCountryNameOptions = (
-    countryNameOptionArray: SelectOption[],
-  ): void => {
-    setCountryNameOptions(countryNameOptionArray);
+  const mapCountryNameOptions = (countries: Country[]): void => {
+    const options = countries.map((c) => {
+      return { value: c.name.common, label: c.name.common };
+    });
+
+    setCountryNameOptions(options);
   };
 
   const state: IAppContextState = {
@@ -57,11 +70,10 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
   };
 
   const actions: IAppContextActions = {
-    updateCountries,
+    setInitialState,
+    // updateCountries,
     updateDisplayCountries,
     selectCountry,
-    updateRegionOptions,
-    updateCountryNameOptions,
   };
 
   return [state, actions];
