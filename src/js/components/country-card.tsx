@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { type Flag } from '../types/types';
+import { buildTextRow, type TextRowSize } from './helpers/build-text-row';
 
 interface CountryCardProps {
   name: string;
@@ -14,14 +15,7 @@ interface CountryCardProps {
 export const CountryCard: React.FunctionComponent<CountryCardProps> = (
   props: CountryCardProps,
 ) => {
-  const buildTextRow = (label: string, value: string | number): JSX.Element => {
-    return (
-      <span className="flex text-xs mb-1">
-        <p className="pr-1">{label}:</p>
-        <p className="text-slate-600">{value}</p>
-      </span>
-    );
-  };
+  const textRowSize: TextRowSize = { size: 'xs' };
 
   return (
     <li className="rounded-md shadow-lg" onClick={props.onClick}>
@@ -35,9 +29,9 @@ export const CountryCard: React.FunctionComponent<CountryCardProps> = (
         </div>
         <div className="p-4 text-slate-800 h-fit mb-2">
           <h5 className="text-xl font-bold mb-2">{props.name}</h5>
-          {buildTextRow('Capital', props.capital)}
-          {buildTextRow('Region', props.region)}
-          {buildTextRow('Population', props.population)}
+          {buildTextRow('Capital', props.capital, textRowSize)}
+          {buildTextRow('Region', props.region, textRowSize)}
+          {buildTextRow('Population', props.population, textRowSize)}
         </div>
       </Link>
     </li>
