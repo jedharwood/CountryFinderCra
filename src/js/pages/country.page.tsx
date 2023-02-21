@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/app-context';
 import { CountryDetail } from '../components/country-detail';
 import { type Flag } from '../types/types';
+import { NoCountryDetail } from '../components/no-country-detail';
 
 export const CountryPage: React.FunctionComponent = () => {
   const { selectedCountry } = useContext(AppContext);
@@ -26,6 +27,6 @@ export const CountryPage: React.FunctionComponent = () => {
       />
     );
   } else {
-    return <h1>No country selected</h1>;
+    return <NoCountryDetail text="No country is selected" />;
   }
 };

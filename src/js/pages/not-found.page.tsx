@@ -1,5 +1,6 @@
 import React from 'react';
+import { NoCountryDetail } from '../components/no-country-detail';
 
 export const NotFoundPage: React.FunctionComponent = () => {
-  return <h1>Page not found please go back</h1>;
+  return <NoCountryDetail text="Not found" />;
 };
