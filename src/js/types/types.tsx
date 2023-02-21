@@ -4,9 +4,14 @@ export interface Country {
   region: string;
   population: number;
   flags: {
-    png: string;
+    svg: string;
     alt: string;
   };
+}
+
+export interface Flag {
+  svg: string;
+  alt: string;
 }
 
 export interface SelectOption {

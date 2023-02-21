@@ -1,5 +1,5 @@
 import React from 'react';
-import { type Flag } from './country-card'; // move this guy
+import { type Flag } from '../types/types';
 
 interface CountryDetailProps {
   name: string;
@@ -25,7 +25,7 @@ export const CountryDetail: React.FunctionComponent<CountryDetailProps> = (
     <div className="rounded-md shadow-lg">
       <div className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75">
         <img
-          src={props.flag.png}
+          src={props.flag.svg}
           alt={props.flag.alt}
           className="object-cover h-full w-full"
         />

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-export interface Flag {
-  png: string;
-  alt: string;
-}
+import { type Flag } from '../types/types';
 
 interface CountryCardProps {
   name: string;
@@ -32,7 +28,7 @@ export const CountryCard: React.FunctionComponent<CountryCardProps> = (
       <Link to={`country/${props.name}`}>
         <div className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75">
           <img
-            src={props.flag.png}
+            src={props.flag.svg}
             alt={props.flag.alt}
             className="object-cover h-full w-full"
           />
