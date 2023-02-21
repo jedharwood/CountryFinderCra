@@ -26,7 +26,7 @@ export const SearchBar: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="w-full px-6 py-4 space-x-6 mb-2 flex space-between">
+    <div className="w-full px-6 py-4 space-x-6 flex space-between">
       <SelectInput
         options={countryNameOptions}
         placeHolder={searchPlaceholder}
