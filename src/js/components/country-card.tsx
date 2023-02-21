@@ -12,6 +12,7 @@ interface CountryCardProps {
   capital: string;
   region: string;
   population: number;
+  onClick?: () => void;
 }
 
 export const CountryCard: React.FunctionComponent<CountryCardProps> = (
@@ -27,23 +28,22 @@ export const CountryCard: React.FunctionComponent<CountryCardProps> = (
   };
 
   return (
-    <li className="rounded-md shadow-lg">
-      <Link
-        to={`country/${props.name}`}
-        className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75 cursor-pointer"
-      >
-        <img
-          src={props.flag.png}
-          alt={props.flag.alt}
-          className="object-cover h-full w-full"
-        />
+    <li className="rounded-md shadow-lg" onClick={props.onClick}>
+      <Link to={`country/${props.name}`}>
+        <div className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75">
+          <img
+            src={props.flag.png}
+            alt={props.flag.alt}
+            className="object-cover h-full w-full"
+          />
+        </div>
+        <div className="p-4 text-slate-800 h-fit mb-2">
+          <h5 className="text-xl font-bold mb-2">{props.name}</h5>
+          {buildTextRow('Capital', props.capital)}
+          {buildTextRow('Region', props.region)}
+          {buildTextRow('Population', props.population)}
+        </div>
       </Link>
-      <div className="p-4 text-slate-800 h-fit mb-2">
-        <h5 className="text-xl font-bold mb-2">{props.name}</h5>
-        {buildTextRow('Capital', props.capital)}
-        {buildTextRow('Region', props.region)}
-        {buildTextRow('Population', props.population)}
-      </div>
     </li>
   );
 };
