@@ -5,7 +5,6 @@ import { type Flag } from './country-card';
 
 export const CountryGrid: React.FunctionComponent = () => {
   const { displayCountries, selectCountry } = useContext(AppContext);
-  // const { displayCountries } = useContext(AppContext);
 
   const countries = displayCountries.map((country) => {
     const flag: Flag = { png: country.flags.png, alt: country.flags.alt };
