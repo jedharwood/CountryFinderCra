@@ -6,7 +6,6 @@ export interface Flag {
 }
 
 interface CountryCardProps {
-  key: string;
   name: string;
   flag: Flag;
   capital: string;
@@ -27,7 +26,7 @@ export const CountryCard: React.FunctionComponent<CountryCardProps> = (
   };
 
   return (
-    <li key={props.key} className="rounded-md shadow-lg">
+    <li className="rounded-md shadow-lg">
       <div className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75 cursor-pointer">
         <img
           src={props.flag.png}
