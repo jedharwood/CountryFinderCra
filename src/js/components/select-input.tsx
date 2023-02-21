@@ -12,14 +12,16 @@ interface SelectProps {
 export const SelectInput: React.FunctionComponent<SelectProps> = (
   props: SelectProps,
 ) => {
+  const { isSearchable, placeHolder, options, onChange } = props;
+
   return (
     <div className="w-full shadow-md">
       <Select
         required={true}
-        isSearchable={props.isSearchable}
-        options={props.options}
-        onChange={props.onChange}
-        placeholder={props.placeHolder}
+        isSearchable={isSearchable}
+        options={options}
+        onChange={onChange}
+        placeholder={placeHolder}
       />
     </div>
   );

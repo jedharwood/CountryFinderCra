@@ -15,23 +15,24 @@ interface CountryCardProps {
 export const CountryCard: React.FunctionComponent<CountryCardProps> = (
   props: CountryCardProps,
 ) => {
+  const { name, flag, capital, region, population, onClick } = props;
   const textRowSize: TextRowSize = { size: 'xs' };
 
   return (
-    <li className="rounded-md shadow-lg" onClick={props.onClick}>
-      <Link to={`country/${props.name}`}>
+    <li className="rounded-md shadow-lg" onClick={onClick}>
+      <Link to={`country/${name}`}>
         <div className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75">
           <img
-            src={props.flag.svg}
-            alt={props.flag.alt}
+            src={flag.svg}
+            alt={flag.alt}
             className="object-cover h-full w-full"
           />
         </div>
         <div className="p-4 text-slate-800 h-fit mb-2">
-          <h5 className="text-xl font-bold mb-2">{props.name}</h5>
-          {buildTextRow('Capital', props.capital, textRowSize)}
-          {buildTextRow('Region', props.region, textRowSize)}
-          {buildTextRow('Population', props.population, textRowSize)}
+          <h5 className="text-xl font-bold mb-2">{name}</h5>
+          {buildTextRow('Capital', capital, textRowSize)}
+          {buildTextRow('Region', region, textRowSize)}
+          {buildTextRow('Population', population, textRowSize)}
         </div>
       </Link>
     </li>
