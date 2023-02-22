@@ -42,9 +42,9 @@ export const CountryDetail: React.FunctionComponent<CountryDetailProps> = (
         <img
           src={flag.svg}
           alt={flag.alt}
-          className="object-cover w-full rounded-lg shadow-md"
+          className="w-full rounded-lg shadow-md"
         />
-        <div className="h-fit mb-2">
+        <div>
           <h5 className="text-2xl font-bold mb-2">{name}</h5>
           {buildTextRow('Capital', capital, textRowSize)}
           {buildTextRow('Region', region, textRowSize)}
@@ -55,13 +55,13 @@ export const CountryDetail: React.FunctionComponent<CountryDetailProps> = (
         </div>
         <span>
           <div className="flex justify-center">
-            <h5 className="text-xl font-bold mb-2">Coat of arms</h5>
+            <h5 className="text-xl font-bold mb-4">Coat of arms</h5>
           </div>
           <div className="flex justify-center">
             <img
               src={coatOfArms}
               alt={`The coat of arms for ${name}`}
-              className="object-cover w-1/2 rounded-lg"
+              className="w-1/2"
             />
           </div>
         </span>

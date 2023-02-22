@@ -27,6 +27,6 @@ export const CountryPage: React.FunctionComponent = () => {
       />
     );
   } else {
-    return <NoCountryDetail text="No country is selected" />;
+    return <NoCountryDetail text="Country not found" />;
   }
 };

@@ -19,16 +19,16 @@ export const CountryCard: React.FunctionComponent<CountryCardProps> = (
   const textRowSize: TextRowSize = { size: 'xs' };
 
   return (
-    <li className="rounded-md shadow-lg" onClick={onClick}>
+    <li className="rounded-md shadow-lg overflow-scroll" onClick={onClick}>
       <Link to={`country/${name}`}>
-        <div className="block w-full h-1/2 rounded-t-md overflow-hidden hover:opacity-75">
+        <div className="block w-full h-1/2 hover:opacity-75">
           <img
             src={flag.svg}
             alt={flag.alt}
             className="object-cover h-full w-full"
           />
         </div>
-        <div className="p-4 text-slate-800 h-fit mb-2">
+        <div className="p-4 text-slate-800">
           <h5 className="text-xl font-bold mb-2">{name}</h5>
           {buildTextRow('Capital', capital, textRowSize)}
           {buildTextRow('Region', region, textRowSize)}
