@@ -8,7 +8,7 @@ export const buildTextRow = (
   { size }: TextRowSize,
 ): JSX.Element => {
   return (
-    <span className={`flex text-${size} mb-1`}>
+    <span className={`flex text-${size.toString()} mb-1`}>
       <p className="pr-1">{label}:</p>
       <p className="text-slate-600">{value}</p>
     </span>

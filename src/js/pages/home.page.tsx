@@ -6,20 +6,20 @@ import { CountryGrid } from '../components/country-grid';
 import { Spinner } from '../components/spinner';
 
 export const HomePage: React.FunctionComponent = () => {
-  const { setInitialState, updateLoading } = useContext(AppContext);
+  const { resetInitialState, setInitialState } = useContext(AppContext);
 
   useEffect(() => {
     const getCountriesAsync = async (): Promise<void> => {
       try {
+        resetInitialState();
         const countries = await getCountriesAlphabetically();
         setInitialState(countries);
-        updateLoading(false);
       } catch (e) {
         console.log(e);
       }
     };
     void getCountriesAsync();
-  }, [setInitialState, updateLoading]);
+  }, []);
 
   return (
     <div className="bg-gray-100 pt-3">

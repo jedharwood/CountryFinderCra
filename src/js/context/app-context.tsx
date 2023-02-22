@@ -4,6 +4,7 @@ import { type SelectOption, type Country } from '../types/types';
 interface IAppContext {
   countries: Country[];
   setInitialState: (countries: Country[]) => void;
+  resetInitialState: () => void;
   // updateCountries: (countries: Country[]) => void;
   displayCountries: Country[];
   updateDisplayCountries: (countries: Country[]) => void;
@@ -12,12 +13,12 @@ interface IAppContext {
   regionOptions: SelectOption[];
   countryNameOptions: SelectOption[];
   loading: boolean;
-  updateLoading: (value: boolean) => void;
 }
 
 const defaultState: IAppContext = {
   countries: [],
   setInitialState: (): void => {},
+  resetInitialState: (): void => {},
   // updateCountries: (): void => {},
   displayCountries: [],
   updateDisplayCountries: (): void => {},
@@ -26,7 +27,6 @@ const defaultState: IAppContext = {
   regionOptions: [],
   countryNameOptions: [],
   loading: true,
-  updateLoading: (): void => {},
 };
 
 export const AppContext = createContext<IAppContext>(defaultState);

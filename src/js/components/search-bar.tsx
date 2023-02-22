@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/app-context';
+import { type Country } from '../types/types';
 import { SelectInput } from './select-input';
+
+export const RESET_OPTIONS: string = '**reset-options**';
 
 export const SearchBar: React.FunctionComponent = () => {
   const {
@@ -13,16 +16,24 @@ export const SearchBar: React.FunctionComponent = () => {
   const regionPlaceholder = 'Select region...';
   const searchPlaceholder = 'Search...';
 
-  const filterCountriesByRegion = (selectValue: string | undefined): void => {
-    const filteredCoutries = countries.filter((c) => c.region === selectValue);
-    updateDisplayCountries(filteredCoutries);
+  const filterByName = (selectValue: string): Country[] => {
+    return countries.filter((c) => c.name.common === selectValue);
   };
 
-  const filterCountriesByName = (selectValue: string | undefined): void => {
-    const filteredCoutries = countries.filter(
-      (c) => c.name.common === selectValue,
-    );
-    updateDisplayCountries(filteredCoutries);
+  const filterByRegion = (selectValue: string): Country[] => {
+    return countries.filter((c) => c.region === selectValue);
+  };
+
+  const filterCountries = (
+    selectValue: string | undefined,
+    filterFunction: (selectValue: string) => Country[],
+  ): void => {
+    if (selectValue === RESET_OPTIONS) {
+      updateDisplayCountries(countries);
+    } else if (selectValue !== undefined) {
+      const filteredCountries = filterFunction(selectValue);
+      updateDisplayCountries(filteredCountries);
+    }
   };
 
   return (
@@ -33,7 +44,7 @@ export const SearchBar: React.FunctionComponent = () => {
           placeHolder={searchPlaceholder}
           isSearchable={true}
           onChange={(e) => {
-            filterCountriesByName(e?.value);
+            filterCountries(e?.value, filterByName);
           }}
         />
         <SelectInput
@@ -41,7 +52,7 @@ export const SearchBar: React.FunctionComponent = () => {
           placeHolder={regionPlaceholder}
           isSearchable={false}
           onChange={(e) => {
-            filterCountriesByRegion(e?.value);
+            filterCountries(e?.value, filterByRegion);
           }}
         />
       </div>
