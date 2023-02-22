@@ -5,7 +5,6 @@ interface IAppContext {
   countries: Country[];
   setInitialState: (countries: Country[]) => void;
   resetInitialState: () => void;
-  // updateCountries: (countries: Country[]) => void;
   displayCountries: Country[];
   updateDisplayCountries: (countries: Country[]) => void;
   selectedCountry: Country | undefined;
@@ -19,7 +18,6 @@ const defaultState: IAppContext = {
   countries: [],
   setInitialState: (): void => {},
   resetInitialState: (): void => {},
-  // updateCountries: (): void => {},
   displayCountries: [],
   updateDisplayCountries: (): void => {},
   selectedCountry: undefined,
