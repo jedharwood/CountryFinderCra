@@ -13,7 +13,6 @@ interface IAppContextState {
 interface IAppContextActions {
   setInitialState: (countries: Country[]) => void;
   resetInitialState: () => void;
-  //   updateCountries: (countryArray: Country[]) => void;
   updateDisplayCountries: (displayCountryArray: Country[]) => void;
   selectCountry: (country: Country) => void;
 }
@@ -45,10 +44,6 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     setLoading(true);
   };
 
-  //   const updateCountries = (countryArray: Country[]): void => {
-  //     setCountries(countryArray);
-  //   };
-
   const updateDisplayCountries = (displayCountryArray: Country[]): void => {
     setDisplayCountries(displayCountryArray);
   };
@@ -69,7 +64,6 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
   const actions: IAppContextActions = {
     setInitialState,
     resetInitialState,
-    // updateCountries,
     updateDisplayCountries,
     selectCountry,
   };

@@ -9,7 +9,7 @@ export const getCountriesAlphabetically = async (): Promise<Country[]> => {
       a.name.common.toLowerCase().localeCompare(b.name.common.toLowerCase()),
     );
   } catch (error) {
-    console.error('Error fetching countries', error);
+    // console.error('Error fetching countries', error);
     return [];
   }
 };
