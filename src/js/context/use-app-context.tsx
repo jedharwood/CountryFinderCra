@@ -12,10 +12,10 @@ interface IAppContextState {
 
 interface IAppContextActions {
   setInitialState: (countries: Country[]) => void;
+  resetInitialState: () => void;
   //   updateCountries: (countryArray: Country[]) => void;
   updateDisplayCountries: (displayCountryArray: Country[]) => void;
   selectCountry: (country: Country) => void;
-  updateLoading: (value: boolean) => void;
 }
 
 export const useAppContext = (): [IAppContextState, IAppContextActions] => {
@@ -33,6 +33,12 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     setDisplayCountries(countries);
     mapRegionOptions(countries);
     mapCountryNameOptions(countries);
+    setLoading(false);
+  };
+
+  const resetInitialState = (): void => {
+    setDisplayCountries([]);
+    setLoading(true);
   };
 
   //   const updateCountries = (countryArray: Country[]): void => {
@@ -64,10 +70,6 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
     setCountryNameOptions(options);
   };
 
-  const updateLoading = (value: boolean): void => {
-    setLoading(value);
-  };
-
   const state: IAppContextState = {
     countries,
     displayCountries,
@@ -79,10 +81,10 @@ export const useAppContext = (): [IAppContextState, IAppContextActions] => {
 
   const actions: IAppContextActions = {
     setInitialState,
+    resetInitialState,
     // updateCountries,
     updateDisplayCountries,
     selectCountry,
-    updateLoading,
   };
 
   return [state, actions];
