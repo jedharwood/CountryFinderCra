@@ -1,6 +1,8 @@
 ## Getting started
 
-Clone the repository onto your machine and install packages with `npm install`
+Clone the repository onto your machine and install packages with `npm install`.
+I built this project in react 18.2.0. I have used both redux and hooks extensively in the past but this has been my first time using contextApi - something I've been wanting to try out for a while.
+The components have been styled responsively using TailwindCss; please try the app out at full screen and mobile screen widths.
 
 ## Available Scripts
 
