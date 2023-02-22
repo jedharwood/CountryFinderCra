@@ -43,12 +43,12 @@ export const NoCountryDetail: React.FunctionComponent<NoCountryDetailProps> = (
       <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 text-slate-800">
         {getCalicoJack()}
         <div>
-          <h5 className="text-2xl font-bold mb-2">{props.text}</h5>
-          <div className="flex justify-center pt-10">
-            <Link to="/" className="text-xl font-bold hover:underline">
-              Go back?
-            </Link>
-          </div>
+          <h5 className="text-2xl font-bold">{props.text}</h5>
+        </div>
+        <div className="flex justify-center">
+          <Link to="/" className="text-xl font-bold hover:underline">
+            Go back?
+          </Link>
         </div>
       </div>
     </div>
