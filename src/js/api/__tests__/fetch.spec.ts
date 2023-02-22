@@ -1,19 +1,6 @@
 import { getCountriesAlphabetically } from '../fetch';
 import { type Country } from '../../types/types';
-
-const buildCountryFixture = (name: string): Country => {
-  return {
-    name: { common: name },
-    capital: 'Capital 1',
-    region: 'Region 1',
-    population: 1,
-    flags: { svg: 'svg_1', alt: 'alt_1' },
-    subregion: 'Subregion 1',
-    unMember: false,
-    area: 1,
-    coatOfArms: { svg: 'svg_1' },
-  };
-};
+import { buildCountryFixture } from '../../test/fixtures/build-country-fixture';
 
 describe('getCountriesAlphabetically', () => {
   const agentina: Country = buildCountryFixture('Argentina');
