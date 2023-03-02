@@ -1,3 +1,7 @@
+## Overview
+
+Small demo app to to teach myself contextApi. 
+
 ## Getting started
 
 Clone the repository onto your machine and install packages with `npm install`.
