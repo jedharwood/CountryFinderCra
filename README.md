@@ -5,7 +5,7 @@ Small demo app to to teach myself contextApi.
 ## Getting started
 
 Clone the repository onto your machine and install packages with `npm install`.
-I built this project in react 18.2.0. I have used both redux and hooks extensively in the past but this has been my first time using contextApi - something I've been wanting to try out for a while.
+I built this project using react 18.2.0 and node 18.14.2. I have used both redux and hooks extensively in the past but this has been my first time using contextApi - something I've been wanting to try out for a while.
 The components have been styled responsively using TailwindCss; please try the app out at full screen and mobile screen widths.
 
 ## Available Scripts
